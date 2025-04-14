@@ -1,0 +1,153 @@
+// Confetti function
+function fireConfetti() {
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 },
+    colors: ['#ff9dd1', '#a5cfa2', '#fce38a', '#6b8e68']
+  });
+}
+
+// Floating emoji function
+function spawnFloatingEmojis() {
+  for (let i = 0; i < 20; i++) {
+    const emoji = document.createElement('img');
+    emoji.src = 'https://file.garden/Z_zfYqPjo0FlxVIy/tiktok%20happy%20png.png';
+    emoji.className = 'floating-emoji';
+    const size = Math.random() * 20 + 20;
+    emoji.style.width = `${size}px`;
+    emoji.style.height = `${size}px`;
+    emoji.style.left = `${Math.random() * 100}%`;
+    emoji.style.top = `${Math.random() * 100}%`;
+    document.body.appendChild(emoji);
+    setTimeout(() => emoji.remove(), 3000);
+  }
+}
+
+// Floating hearts function
+function createFloatingHearts() {
+  const heart = document.createElement('div');
+  heart.innerHTML = '❤️';
+  heart.className = 'floating-heart';
+  heart.style.left = `${Math.random() * 100}%`;
+  heart.style.fontSize = `${Math.random() * 20 + 10}px`;
+  heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+  document.body.appendChild(heart);
+  
+  setTimeout(() => {
+    heart.remove();
+  }, 4000);
+}
+
+// Cursor follower
+function createCursorFollower() {
+  const follower = document.createElement('div');
+  follower.className = 'cursor-follower';
+  document.body.appendChild(follower);
+  
+  document.addEventListener('mousemove', (e) => {
+    follower.style.left = `${e.clientX + 15}px`;
+    follower.style.top = `${e.clientY + 15}px`;
+    follower.style.transform = `translate(-50%, -50%) rotate(${e.clientX * 0.1}deg)`;
+  });
+}
+
+// Background animation
+function animateBackground() {
+  const colors = ['#d2e8cf', '#f5e6ff', '#fff6e6', '#e6f7ff'];
+  let current = 0;
+  
+  setInterval(() => {
+    document.body.style.backgroundColor = colors[current];
+    current = (current + 1) % colors.length;
+  }, 8000);
+}
+
+// Initialize animations
+function initAnimations() {
+  createCursorFollower();
+  animateBackground();
+  setInterval(createFloatingHearts, 800);
+  
+  // Pulsing shadow for password box
+  setInterval(() => {
+    const box = document.querySelector('.password-box');
+    if (box) {
+      box.style.boxShadow = `0 0 ${Math.random() * 20 + 10}px rgba(107, 142, 104, 0.5)`;
+    }
+  }, 2000);
+}
+
+function checkPassword() {
+  const password = document.getElementById('passwordInput').value;
+  if (password === '041502') {
+    document.getElementById('passwordPage').classList.add('hidden');
+    document.getElementById('mainPage').classList.remove('hidden');
+    document.getElementById('errorMessage').style.display = 'none';
+    fireConfetti();
+    spawnFloatingEmojis();
+    initAnimations();
+  } else {
+    document.getElementById('errorMessage').style.display = 'block';
+    document.getElementById('passwordInput').classList.add('shake');
+    setTimeout(() => {
+      document.getElementById('passwordInput').classList.remove('shake');
+    }, 500);
+  }
+}
+
+function openMessage(type) {
+  const messageBox = document.getElementById('messageBox');
+  const messageText = document.getElementById('messageText');
+  
+  if (type === 'letter') {
+    messageText.innerHTML = `hi baby! happy birthday, you're getting old HAHAHA<br><br>i would've never expected to be this close to you especially since i know we were always just casual friends who played together when we both happen to be invited to the same party. i honestly found you a biiit intimidating at first because you were older than me and i thought you were all nonchalant who gave no shits but quickly warmed up to you since you liked making jokes and making the people around you laugh.<br><br>i hope you know how grateful i am to have someone like you in this life. you're truly one of the very few people that make it easier for me to wake up in the morning (mostly noon but yk what i mean heh). you're my favorite notification as i always try to see if you've texted me or sent me something first thing after i open my eyes. i love just being around you in general whether it's us playing, talking, or simply sitting in silence.<br><br>to tell you the truth, i thought me saying i was interested in you would lead to us being awkward and possibly hangout less because i know how dating in general is like for you and what your priorities are, but i'm so glad it didn't turn out that way and instead i get to learn more about you everyday when it comes to what you like, dislike, what gets you annoyed, what makes you excited, what gets you upset, etc and i'd love to keep learning more about you. theres a whooole lot for me to learn, good and bad, i wanna know it all. even with the flaws you think you have, i'll always think you're perfect and i'll make sure you know that. i try to pay attention to as many details as i can but unfortunately my brain can't handle it all at once so forgive me if i accidentally forget things TT.<br><br>i love that you're very eager to share things with me even if it's small like you sending me a picture of something cute that you saw at the store or random stories from your childhood. it warms my heart how comfortable you've gotten with opening up to me and telling me how you feel.<br><br>anyway, i'm happy that i get to have this side of you that no one ever sees. call me selfish but i really don't want to be sharing you with anyone else heh.<br><br>i actually wasn't sure what i could do for you, but i thought to myself i wanted it to be special so i started planning a whole month ahead for this code, even learned a whole new language for you HAHAHAHA. it's not a lot but i hope it's still something!<br><br>theres never a dull moment with you and it's one of the many things i adore about you.<br><br>i hope you have/had a great birthday baby, i love you a lot <3`;
+  } else {
+    messageText.innerHTML = `hi again,<br><br>since you're turning 23, i figured it only made sense to list 23 things i love about you :] (obviously there's more — but i guess you'll have to wait for 24 next year… then 25… 26… yeah you get it hehe.)<br><br>
+    1. your voice heh<br>
+    2. your humor<br>
+    3. your laugh, especially when it's because of me<br>
+    4. your hands TIKTOKHAPPY!!!!!!!<br>
+    5. how gentle you are with me<br>
+    6. you're really sweet<br>
+    7. you're very smart (nerd :p)<br>
+    8. how you make me feel super safe & comfy<br>
+    9. how you always wanna be the best<br>
+    10. how you like cute things (just like you)<br>
+    11. how you act when it's just the two of us<br>
+    12. how caring you are<br>
+    13. how you actually listen<br>
+    14. how you always find a way to make me laugh<br>
+    15. the way you tease me<br>
+    16. how you send me photos of everything (pls never stop)<br>
+    17. how needy you get<br>
+    18. the way you ramble<br>
+    19. how clingy you are<br>
+    20. when you get excited over the tiniest things<br>
+    21. how you try to spend all your free time with me<br>
+    22. how you trust me enough to be vulnerable around me<br>
+    23. how passionate you are about the things (and people) you love<br><br>
+    happy 23rd. i love you a lil more every day — so yeah… this list will definitely keep growing.`;
+  }
+  
+  messageBox.classList.add('show');
+  fireConfetti();
+  spawnFloatingEmojis();
+}
+
+function closeMessage() {
+  const messageBox = document.getElementById('messageBox');
+  messageBox.style.animation = 'fadeOut 0.5s forwards';
+  
+  setTimeout(() => {
+    messageBox.classList.remove('show');
+    messageBox.style.animation = '';
+  }, 500);
+}
+
+// Allow pressing Enter to submit password
+document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    checkPassword();
+  }
+});
